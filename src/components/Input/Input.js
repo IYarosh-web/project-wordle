@@ -12,6 +12,7 @@ function Input({
     e.preventDefault();
 
     onSubmit(value.toUpperCase());
+    setValue("");
   }
 
   return (
@@ -31,6 +32,7 @@ function Input({
           value={value.toUpperCase()}
           onChange={(e) => setValue(e.currentTarget.value)}
           required
+          pattern={[`[a-zA-Z]{${WORD_LENGTH}}`]}
           minLength={WORD_LENGTH}
           maxLength={WORD_LENGTH}
       />
