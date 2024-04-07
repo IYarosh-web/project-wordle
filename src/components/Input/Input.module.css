@@ -13,4 +13,7 @@
     text-transform: capitalize;
     font-size: 2rem;
     outline-offset: 4px;
+    outline-color: #212121;
+    border: 2px solid;
+    border-radius: 4px;
 }

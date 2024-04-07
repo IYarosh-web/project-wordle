@@ -8,11 +8,16 @@ import { range } from "../../utils";
 
 function GuessResults({
   guesses = [],
+  answer = "",
 }) {
   return (
     <div className={styles.wrapper}>
       {range(NUM_OF_GUESSES_ALLOWED).map((guess, index) => (
-        <Guess key={guess.id || index} value={guesses[index]?.value} />
+        <Guess
+          key={guess.id || index}
+          answer={answer}
+          value={guesses[index]?.value}
+        />
       ))}
     </div>
   );
