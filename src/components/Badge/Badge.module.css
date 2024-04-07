@@ -1,0 +1,31 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  padding: 24px;
+  width: 600px;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 0 0 12px 12px;
+  color: white;
+  transition: transform .2s;
+  animation: slide-in 350ms 500ms ease-in-out both;
+}
+
+.happy {
+  background-color: hsl(110deg, 60%, 45%);
+}
+
+.sad {
+  background-color: hsl(12deg, 60%, 45%);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%) translateX(-50%);
+  }
+
+  to {
+    transform: translateY(0) translateX(-50%);
+  }
+}

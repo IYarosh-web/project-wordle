@@ -4,6 +4,7 @@ import { WORD_LENGTH } from "../../constants";
 import styles from "./Input.module.css";
 
 function Input({
+    disabled,
     onSubmit,
 }) {
   const [value, setValue] = useState("");
@@ -29,6 +30,7 @@ function Input({
       <input
           className={styles.input}
           id="user-guess-input"
+          disabled={disabled}
           value={value.toUpperCase()}
           onChange={(e) => setValue(e.currentTarget.value)}
           required
