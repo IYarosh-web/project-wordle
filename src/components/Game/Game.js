@@ -7,6 +7,7 @@ import Input from "../Input";
 import GuessResults from "../GuessResults";
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import Badge from '../Badge';
+import Keyboard from '../Keyboard';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -46,6 +47,7 @@ function Game() {
         disabled={resultStatus !== null}
         onSubmit={handleNewUserGuess}
       />
+      <Keyboard />
       {resultStatus === "sad" && (
         <Badge type="sad">
           Sorry, the right answer is {answer}
