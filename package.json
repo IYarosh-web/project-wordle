@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
+  "homepage": "https://IYarosh-web.github.io/project-wordle",
   "dependencies": {
     "eslint": "8.49.0",
     "eslint-config-react-app": "7.0.1",
@@ -17,8 +18,13 @@
   "scripts": {
     "predev": "rimraf .parcel-cache dist",
     "dev": "parcel public/index.html",
-    "build": "parcel build public/index.html",
-    "new-component": "new-component"
+    "build": "parcel build public/index.html --public-url ./",
+    "new-component": "new-component",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
 }
