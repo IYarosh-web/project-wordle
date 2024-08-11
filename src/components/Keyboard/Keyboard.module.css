@@ -1,5 +1,6 @@
 .wrapper {
-  --gap: 8px;
+  --gap: 6px;
+  --letter-button-size: 40px;
 
   display: flex;
   flex-direction: column;
@@ -13,10 +14,31 @@
 }
 
 .letter {
-  width: 60px;
-  height: 80px;
-  background-color: hsl(270deg, 15%, 25%);
+  width: var(--letter-button-size);
+  height: var(--letter-button-size);
+  line-height: var(--letter-button-size);
+  background-color: hsl(0, 10%, 85%);
   text-align: center;
-  font-size: 2rem;
-  color: hsl(240deg, 5%, 95%);
+  font-size: 1.4rem;
+  color: hsl(0, 0%, 5%);
+  border-radius: 6px;
+}
+
+.correct {
+  background-color: hsl(120deg, 75%, 70%);
+}
+
+.misplaced {
+  background-color: hsl(60deg, 75%, 70%);
+}
+
+.incorrect {
+  background-color: hsl(0, 15%, 15%);
+  color: hsl(0, 0%, 85%);
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    --letter-button-size: 30px;
+  }
 }

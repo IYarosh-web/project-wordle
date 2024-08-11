@@ -1,6 +1,6 @@
 .wrapper {
+  --cell-size: 80px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   gap: 8px;
   overflow: hidden;
 
@@ -9,8 +9,8 @@
 
 .cell {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: var(--cell-size);
+  height: var(--cell-size);
   font-size: 3.5rem;
   background-color: white;
   color: black;
@@ -79,6 +79,62 @@
   animation: flip 200ms ease forwards 1000ms;
 }
 
+.cell:has(.front:not(:empty)):nth-child(7) {
+  animation: flip 200ms ease forwards 1200ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(8) {
+  animation: flip 200ms ease forwards 1400ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(9) {
+  animation: flip 200ms ease forwards 1600ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(10) {
+  animation: flip 200ms ease forwards 1800ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(11) {
+  animation: flip 200ms ease forwards 2000ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(12) {
+  animation: flip 200ms ease forwards 2200ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(13) {
+  animation: flip 200ms ease forwards 2400ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(14) {
+  animation: flip 200ms ease forwards 2600ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(16) {
+  animation: flip 200ms ease forwards 2800ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(17) {
+  animation: flip 200ms ease forwards 3000ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(18) {
+  animation: flip 200ms ease forwards 3200ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(19) {
+  animation: flip 200ms ease forwards 3400ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(20) {
+  animation: flip 200ms ease forwards 3600ms;
+}
+
+.cell:has(.front:not(:empty)):nth-child(6) {
+  animation: flip 200ms ease forwards 1000ms;
+}
+
 .wrapper:first-of-type .cell:first-of-type > .back, 
 .wrapper:first-of-type .cell:first-of-type > .front {
   border-top-left-radius: 12px;
@@ -102,5 +158,21 @@
 
   to {
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    --cell-size: 40px;
+  }
+
+  .cell {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .wrapper {
+    align-self: center;
   }
 }

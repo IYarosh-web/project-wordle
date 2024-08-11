@@ -2,21 +2,29 @@ import React from "react";
 
 import styles from "./Keyboard.module.css";
 
-const PATTERN = [
-  ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-  ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-  ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
-];
+import { KEYBOARD_PATTERN } from "../../constants";
 
-function Keyboard() {
+function Keyboard({
+  disabled,
+  checkedLetters,
+  onLetterInput,
+}) {
+  const handleClick = (e) => {
+    onLetterInput(e.target.name);
+  }
+
   return (
     <div className={styles.wrapper}>
-      {PATTERN.map(lettersRow => (
+      {KEYBOARD_PATTERN.map(lettersRow => (
         <div className={styles.row}>
           {lettersRow.map(letter => (
             <button
-              className={styles.letter}
+              disabled={disabled}
+              type="button"
+              className={styles.letter + " " + styles[checkedLetters[letter]]}
               key={letter}
+              name={letter}
+              onClick={handleClick}
             >
               {letter}
             </button>

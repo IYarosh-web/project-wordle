@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { WORD_LENGTH } from '../../constants';
-
 import { range } from '../../utils';
 
 import * as styles from "./Guess.module.css";
@@ -14,8 +12,10 @@ function Guess({
   const letters = checkGuess(value, answer) || [];
 
   return (
-    <div className={styles.wrapper}>
-       {range(WORD_LENGTH).map((_, index) => (
+    <div className={styles.wrapper} style={{
+      gridTemplateColumns: `repeat(${answer.length}, 1fr)`,
+    }}>
+       {range(answer.length).map((_, index) => (
         <span key={index} className={styles.cell}>
           <span className={styles.back}></span>
           <span

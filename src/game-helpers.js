@@ -53,3 +53,57 @@ export function checkGuess(guess, answer) {
 
   return result;
 }
+
+export const getPressedLetter = (e) => {
+  const code = e.code;
+
+  const isValid = /[А-Я]/.test(code.toUpperCase());
+  if (isValid) {
+    return code.toUpperCase();
+  }
+
+  return mapKeyCodeToLetter(e.code);
+}
+
+export const getCurrentLang = () => {
+  return navigator.language || navigator.userLanguage;
+}
+
+export const mapKeyCodeToLetter = (code) => {
+  const map = {
+    'KeyQ': "Й",
+    'KeyW': "Ц",
+    'KeyE': "У",
+    'KeyR': "К",
+    'KeyT': "Е",
+    'KeyY': "Н",
+    'KeyU': "Г",
+    'KeyI': "Ш",
+    'KeyO': "Щ",
+    'KeyP': "З",
+    'BracketLeft': "Х",
+    'BracketRight': "Ъ",
+    'KeyA': "Ф",
+    'KeyS': "Ы",
+    'KeyD': "В",
+    'KeyF': "А",
+    'KeyG': "П",
+    'KeyH': "Р",
+    'KeyJ': "О",
+    'KeyK': "Л",
+    'KeyL': "Д",
+    'Semicolon': "Ж",
+    'Quote': "Э",
+    'KeyZ': "Я",
+    'KeyX': "Ч",
+    'KeyC': "С",
+    'KeyV': "М",
+    'KeyB': "И",
+    'KeyN': "Т",
+    'KeyM': "Ь",
+    'Comma': "Б",
+    'Period': "Ю",
+  }
+
+  return map[code];
+}

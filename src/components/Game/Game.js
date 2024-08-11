@@ -1,28 +1,49 @@
 import React from 'react';
 
-import { sample } from '../../utils';
-import { WORDS } from '../../data';
-
 import Input from "../Input";
 import GuessResults from "../GuessResults";
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import Badge from '../Badge';
-import Keyboard from '../Keyboard';
-
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
+import { checkGuess } from '../../game-helpers';
+import { AnswerContext } from '../../providers/answerProvider';
 
 function Game() {
   const [userGuesses, setUserGuesses] = React.useState([]);
-  const [resultStatus, setResultStatus] = React.useState(null); 
+  const [resultStatus, setResultStatus] = React.useState(null);
+  const { loading, answer } = React.useContext(AnswerContext);
+
+  const [checkedLetters, setCheckedLetters] = React.useState({});
 
   const handleNewUserGuess = (value) => {
     const newGuess = {
       id: crypto.randomUUID(),
       value,
     };
+
+    const letters = checkGuess(newGuess.value, answer);
+
+    let patch = checkedLetters;
+    letters.forEach(letterMeta => {
+      function updateLetterStatus(letter, newStatus ) {
+        switch(checkedLetters[letter]) {
+          case 'misplaced':
+          case undefined:
+            patch[letter] = newStatus;
+            return;
+          case 'correct':
+          case 'incorrect':
+          default:
+            return;
+        }
+      }
+
+      updateLetterStatus(letterMeta.letter, letterMeta.status)
+    })
+
+    setCheckedLetters(current => ({
+      ...current,
+      ...patch,
+    }));
 
     const nextUserGuesses = [...userGuesses, newGuess];
     setUserGuesses(nextUserGuesses);
@@ -37,6 +58,8 @@ function Game() {
     }
   }
 
+  if (loading || !answer) return <>Загрузка...</>
+
   return (
     <>
       <GuessResults
@@ -44,18 +67,18 @@ function Game() {
         answer={answer}
       />
       <Input
+        checkedLetters={checkedLetters}
         disabled={resultStatus !== null}
         onSubmit={handleNewUserGuess}
       />
-      <Keyboard />
       {resultStatus === "sad" && (
         <Badge type="sad">
-          Sorry, the right answer is {answer}
+          Не в этот раз. Правильный ответ был: {answer}
         </Badge>
       )}
       {resultStatus === "happy" && (
         <Badge type="happy">
-          Congratulations! You got it in {userGuesses.length} guesses.
+          Поздравляю! Ты справился. Попыток: {userGuesses.length}
         </Badge>
       )}
     </>

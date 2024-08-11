@@ -29,3 +29,9 @@
     transform: translateY(0) translateX(-50%);
   }
 }
+
+@media (max-width: 1024px) {
+  .wrapper {
+    font-size: 1rem;
+  } 
+}
