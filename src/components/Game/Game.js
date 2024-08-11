@@ -73,12 +73,12 @@ function Game() {
       />
       {resultStatus === "sad" && (
         <Badge type="sad">
-          Не в этот раз. Правильный ответ был: {answer}
+          Додик. Правильный ответ был: {answer}
         </Badge>
       )}
       {resultStatus === "happy" && (
         <Badge type="happy">
-          Поздравляю! Ты справился. Попыток: {userGuesses.length}
+         Ну мёд, ну медятина. Попыток: {userGuesses.length}
         </Badge>
       )}
     </>
