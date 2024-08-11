@@ -11,7 +11,7 @@ export default function AnswerProvider({ children }) {
     () => {
       setLoading(true);
       fetch(ANSWER_URL, {
-        headers: {"Cache": "no-cache" }
+        cache: "no-cache"
       })
         .then(response => response.text())
         .then(answer => setAnswer(answer.trim()))
