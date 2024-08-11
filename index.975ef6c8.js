@@ -27251,9 +27251,7 @@ function AnswerProvider({ children }) {
     (0, _reactDefault.default).useEffect(()=>{
         setLoading(true);
         fetch((0, _constants.ANSWER_URL), {
-            headers: {
-                "Cache": "no-cache"
-            }
+            cache: "no-cache"
         }).then((response)=>response.text()).then((answer)=>setAnswer(answer.trim())).finally(()=>setLoading(false));
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AnswerContext.Provider, {
