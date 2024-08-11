@@ -10,7 +10,9 @@ export default function AnswerProvider({ children }) {
   React.useEffect(
     () => {
       setLoading(true);
-      fetch(ANSWER_URL)
+      fetch(ANSWER_URL, {
+        headers: {"Cache": "no-cache" }
+      })
         .then(response => response.text())
         .then(answer => setAnswer(answer.trim()))
         .finally(() => setLoading(false));
